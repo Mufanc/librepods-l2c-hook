@@ -1,0 +1,24 @@
+[package]
+name = "librepods-l2c-hook"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-only"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+android_logger = { version = "0.15.1", default-features = false }
+ctor = "1.0.13"
+libc = "0.2"
+log = "0.4"
+r3solvr = { git = "https://github.com/Mufanc/r3solvr", rev = "5969d7678d12daa9ea7c5848e89bf99a50151356" }
+wisp = { git = "https://github.com/Mufanc/wisp", rev = "3fd81219da977a1e772a67550a044e2056ac8c04" }
+
+[profile.release]
+lto = "thin"
+opt-level = "s"
+panic = "abort"
+strip = "symbols"
+
+[workspace]
