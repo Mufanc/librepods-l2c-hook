@@ -13,5 +13,9 @@ build:
     cargo build --release --target {{target}} --config target.{{target}}.linker='"{{cc}}"'
 
 package: build
-    mkdir -p dist
-    cp target/{{target}}/release/liblibrepods_l2c_hook.so 'dist/com.android.bluetooth@librepods-l2c-hook.so'
+    mkdir -p target/module/lib
+    cp module/module.prop module/zynx.toml module/customize.sh target/module/
+    cp target/{{target}}/release/liblibrepods_l2c_hook.so target/module/lib/librepods-l2c-hook.so
+    rm -f target/librepods-l2c-hook.zip
+    cd target/module && zip ../librepods-l2c-hook.zip module.prop zynx.toml customize.sh lib/librepods-l2c-hook.so
+    unzip -t target/librepods-l2c-hook.zip

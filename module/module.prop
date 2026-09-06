@@ -1,0 +1,6 @@
+id=librepods-l2c-hook
+name=LibrePods L2CAP Hook
+version=v0.1.0
+versionCode=1
+author=Mufanc
+description=LibrePods Bluetooth L2CAP hook loaded by Zynx.

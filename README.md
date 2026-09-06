@@ -7,21 +7,14 @@ negotiated FCR channel modes.
 
 ## Deployment
 
-This hook requires [Zynx](https://github.com/Mufanc/zynx) with LiteLoader enabled. LiteLoader
-loads files from `/data/adb/zynx/liteloader/` using the
-`<package_name>@<library_name>.so` naming convention.
+Requires an ARM64 device and Zynx with `zynx.toml` module support. Set `ANDROID_NDK`
+to your installed NDK directory, then build the module:
 
-Place the library in `/data/adb/zynx/liteloader/` as
-`com.android.bluetooth@librepods-l2c-hook.so`. For devices whose Bluetooth package is
-`com.google.android.bluetooth`, add a symlink named
-`com.google.android.bluetooth@librepods-l2c-hook.so` pointing to that file. This keeps only
-one physical copy of the library:
-
-```text
-/data/adb/zynx/liteloader/
-├── com.android.bluetooth@librepods-l2c-hook.so
-└── com.google.android.bluetooth@librepods-l2c-hook.so
-    -> com.android.bluetooth@librepods-l2c-hook.so
+```sh
+just package
+adb push target/librepods-l2c-hook.zip /sdcard/Download/
 ```
 
-Restart the Bluetooth process or reboot after deployment.
+Install the ZIP through KernelSU Manager alongside the Zynx module, then reboot.
+The manifest targets both supported Bluetooth package names; no symlinks are needed.
+Remove any previous LiteLoader copy before rebooting to avoid loading the hook twice.

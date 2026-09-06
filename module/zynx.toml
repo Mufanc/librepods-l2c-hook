@@ -1,0 +1,6 @@
+manifest_version = 1
+library = "lib/librepods-l2c-hook.so"
+
+[[targets]]
+source = "zygote"
+packages = ["com.android.bluetooth", "com.google.android.bluetooth"]
