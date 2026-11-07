@@ -7,7 +7,7 @@ negotiated FCR channel modes.
 
 ## Deployment
 
-Requires an ARM64 device and Zynx with `zynx.toml` module support. Set `ANDROID_NDK`
+Requires an ARM64 device and Zynx with manifest version 2 support. Set `ANDROID_NDK`
 to your installed NDK directory, then build the module:
 
 ```sh

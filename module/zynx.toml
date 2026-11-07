@@ -1,6 +1,9 @@
-manifest_version = 1
+manifest_version = 2
+
+[[inject]]
+source = "zygote"
 library = "lib/librepods-l2c-hook.so"
 
-[[targets]]
-source = "zygote"
+[inject.filter]
+type = "static"
 packages = ["com.android.bluetooth", "com.google.android.bluetooth"]
